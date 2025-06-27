@@ -22,7 +22,7 @@ public class Command implements CommandExecutor {
             return true;
         }
         if (args.length == 1){
-            if (args[1].equalsIgnoreCase("tp")){
+            if (args[0].equalsIgnoreCase("tp")){
                 if (commandSender instanceof Player){
                     Player player = (Player) commandSender;
                     Location location = player.getLocation().clone();
