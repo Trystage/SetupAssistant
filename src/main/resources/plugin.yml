@@ -6,3 +6,6 @@ description: A tool helps bedwars map setup
 permissions:
   setup.admin:
     default: op
+commands:
+  setupassist:
+    aliases: [setup, setupassistant]
