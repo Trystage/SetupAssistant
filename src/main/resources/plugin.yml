@@ -1,0 +1,8 @@
+name: SetupAssistant
+version: '${project.version}'
+main: win.trystage.setupassistant.SetupAssistant
+authors: [TrystageBedwars]
+description: A tool helps bedwars map setup
+permissions:
+  setup.admin:
+    default: op
