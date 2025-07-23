@@ -8,4 +8,4 @@ permissions:
     default: op
 commands:
   setupassist:
-    aliases: [setup, setupassistant]
+    aliases: [setup, setupassistant, s]

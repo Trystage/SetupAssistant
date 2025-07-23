@@ -2,23 +2,27 @@ package win.trystage.setupassistant;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
+import static win.trystage.setupassistant.ItemUtil.giveSetupItem;
 
-public class Command implements CommandExecutor {
+public class Commands implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender commandSender, org.bukkit.command.Command command, String s, String[] args) {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (!commandSender.hasPermission("setup.admin")){
             return false;
         }
         if (args.length == 0){
-            commandSender.sendMessage(ChatColor.RED + "Usage: /setup tp");
+            if (commandSender instanceof Player){
+                Player player = (Player) commandSender;
+                giveSetupItem(player);
+            }else{
+                commandSender.sendMessage(ChatColor.RED + "Only player can run this command");
+            }
             return true;
         }
         if (args.length == 1){
@@ -35,7 +39,21 @@ public class Command implements CommandExecutor {
                 }else{
                     commandSender.sendMessage(ChatColor.RED + "Only player can run this command");
                 }
+                return true;
             }
+            if (args[0].equalsIgnoreCase("item") || args[0].equalsIgnoreCase("i")){
+                if (commandSender instanceof Player){
+                    Player player = (Player) commandSender;
+                    giveSetupItem(player);
+                }else{
+                    commandSender.sendMessage(ChatColor.RED + "Only player can run this command");
+                }
+                return true;
+            }
+            if (args[0].equalsIgnoreCase("help")){
+                commandSender.sendMessage(ChatColor.RED + "Usage: /setup tp/item");
+            }
+            commandSender.sendMessage(ChatColor.RED + "Usage: /setup tp/item");
             return true;
         }
         return false;

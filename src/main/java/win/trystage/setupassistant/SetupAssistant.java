@@ -9,7 +9,8 @@ public final class SetupAssistant extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        getCommand("setupassist").setExecutor(new Command());
+        getCommand("setupassist").setExecutor(new Commands());
+        getServer().getPluginManager().registerEvents(new listener(),this);
     }
 
     @Override
